@@ -1,7 +1,9 @@
 package tv.codely.mooc.video.infrastructure
 
+import arrow.core.Either
 import tv.codely.mooc.video.domain.Video
 import tv.codely.mooc.video.domain.VideoRepository
+import tv.codely.mooc.video.domain.exception.VideoNotFoundException
 import java.util.*
 
 class VideoRepositoryInMemoryImpl : VideoRepository {
@@ -14,4 +16,11 @@ class VideoRepositoryInMemoryImpl : VideoRepository {
     }
 
     override fun getLastPublishedVideo() = videoList[videoList.size - 1]
+
+    override fun findVideoByTitle(title: String): Either<Throwable, Video> {
+        videoList.forEach {
+            if (it.title.value() == title) Either.Right(it)
+        }
+        return Either.Left(VideoNotFoundException("This video could not be found."))
+    }
 }
