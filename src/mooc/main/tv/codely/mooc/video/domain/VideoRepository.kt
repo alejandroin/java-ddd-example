@@ -7,5 +7,5 @@ interface VideoRepository {
     fun save(video: Video)
 
     fun getLastPublishedVideo(): Video
-    fun findVideoByTitle(title: String): Either<Throwable, Video>
+    fun findVideoByTitle(title: VideoTitle): Either<Throwable, Video>
 }

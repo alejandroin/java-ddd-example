@@ -8,6 +8,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile 'org.twitter4j:twitter4j-stream:4.0.6'
     implementation "io.arrow-kt:arrow-core:$arrow_version"
+    testImplementation "io.mockk:mockk:1.9.3"
+    testCompile 'org.assertj:assertj-core:3.4.1'
 }
 repositories {
     maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }

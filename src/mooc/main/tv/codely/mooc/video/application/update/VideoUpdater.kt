@@ -4,15 +4,11 @@ import tv.codely.mooc.video.domain.VideoRepository
 import tv.codely.mooc.video.domain.VideoTitle
 
 class VideoUpdater(private val videoRepository: VideoRepository) {
-
-
-    fun updateVideoName(title: String) {
+    fun updateVideoName(title: VideoTitle, newTitle: VideoTitle) {
 
         videoRepository.findVideoByTitle(title).fold(
-                { throw IllegalArgumentException("asdf") },
-                { it.updateTitle(VideoTitle(title)) }
+                { throw it },
+                { it.updateTitle(newTitle) }
         )
-
-
     }
 }
